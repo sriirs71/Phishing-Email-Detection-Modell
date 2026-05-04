@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Email Detector</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="background-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+    
+    <div class="container glass-panel">
+        <header>
+            <h1><span class="gradient-text">Phishing</span> Email Detector</h1>
+            <p class="subtitle">AI-powered threat analysis</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <textarea id="email-input" placeholder="Paste the suspicious email content here..." rows="8"></textarea>
+                <button id="analyze-btn">
+                    <span class="btn-text">Analyze Email</span>
+                    <div class="spinner hidden" id="loading-spinner"></div>
+                </button>
+            </div>
+
+            <div class="results-section hidden" id="results-panel">
+                <div class="result-header">
+                    <h2>Analysis Result</h2>
+                    <div id="status-badge" class="badge">Safe</div>
+                </div>
+                
+                <div class="probability-bars">
+                    <div class="bar-container">
+                        <div class="bar-label">
+                            <span>Phishing</span>
+                            <span id="prob-phishing">0%</span>
+                        </div>
+                        <div class="bar-bg">
+                            <div class="bar-fill fill-red" id="fill-phishing" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="bar-container">
+                        <div class="bar-label">
+                            <span>Safe</span>
+                            <span id="prob-safe">0%</span>
+                        </div>
+                        <div class="bar-bg">
+                            <div class="bar-fill fill-green" id="fill-safe" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="error-message" class="error hidden"></div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
